@@ -1,0 +1,2 @@
+# Cracking hash
+john hash --incremental=digits --max-length=7
