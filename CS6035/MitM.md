@@ -26,4 +26,6 @@ pip3 install uncompyle6
 uncompyle6 -o . <.pyc File>
 
 # Byte-compiled Python module for CPython 3.9 (magic: 3425)
+# Will not run unless using the same python version and must have the .pyc extension (even in Linux)
+# RuntimeError: Bad magic number in .pyc file
 ```
