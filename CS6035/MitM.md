@@ -20,7 +20,7 @@ john hash --incremental=digits --max-length=7
 ```
 
 # Python
-```
+```python
 # Decompile python compiled byte code
 pip3 install uncompyle6
 uncompyle6 -o . <.pyc File>
