@@ -9,6 +9,14 @@ import ipaddress
 ipaddress.IPv4Address(<Byte Order>)
 ```
 
+# PGP/GPG
+```
+# Decrypt files with private key
+gpg --import <Private Key>
+gpg --list-secret-keys
+gpg --decrypt <Encrypted Message> --output <File>
+```
+
 # Wireshark
 ```
 
