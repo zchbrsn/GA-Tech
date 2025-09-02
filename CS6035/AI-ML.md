@@ -1,4 +1,6 @@
 # pandas  
+https://madewithml.com/courses/foundations/pandas/  
+
 DataFrames - CSV, Excel, SQL  
 Handles missing values - ```dropna(), fillna()```  
 Data Exploration - ```describe(), groupby()```  
