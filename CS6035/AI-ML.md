@@ -9,7 +9,7 @@ Merging Datasets - ```merge(), concat()```
 ```python
 import pandas as pd
 
-df = pd.read_csv('<File>')
+df = pd.read_csv("<File>", sep="\t", delimiter=",")
 print(df.head())
 
 
