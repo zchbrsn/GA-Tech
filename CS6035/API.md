@@ -1,9 +1,9 @@
 # Curl
-```
+```bash
 -i - Include headers
 -X - HTTP Request type
-
-
+-H - Header value
+-d - Data
 
 # GET
 curl -H "GATECH_ID: 904160213" -iX <GET> <Target>/<API>
