@@ -11,4 +11,7 @@ curl -H "GATECH_ID: 904160213" -iX <GET> <Target>/<API>
 # POST
 curl -H "GATECH_ID: 904160213" -iX <POST> <Target>/<API> -H "Content-Type: application/json" -d "{\"<Field>\":\"<Value>\"}"
 curl -H "GATECH_ID: 904160213" -iX <POST> <Target>/<API> --json '{"<Key>":"<Value>"}'
+
+# Brute force user IDs
+seq -w 10000000 99999999 | ffuf -u http://localhost:8080/profiles/FUZZ -X GET -H "GATECH_ID: 904160213" -w -
 ```
