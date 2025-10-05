@@ -19,3 +19,5 @@ seq -w 10000000 99999999 | ffuf -u http://localhost:8080/profiles/FUZZ -X GET -H
 hashcat -a 0 -m 16500 <Token> <Wordlist>
 ```
 
+# JWT
+https://workbook.securityboat.net/Pentesting/Web%20Application/jwt-and-its-bypass/  
