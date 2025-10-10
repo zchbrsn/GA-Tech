@@ -41,3 +41,8 @@ for i in range(0,9000):
 
     print(r2.content)
 ```
+
+# API Paths
+```
+https://gist.github.com/rodnt/250dd33af97d228cc94cd11504abef06
+```
