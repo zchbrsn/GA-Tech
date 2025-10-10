@@ -9,4 +9,9 @@ var <Variable> = document.GetElementByName("<Name>");
 
 # Get content from a page
 fetchServerContent("<URL>");
+
+# Events
+document.addEventListener('click', (event) => {
+  event.preventDefault();
+});
 ```
