@@ -74,7 +74,7 @@ console.log(pair);
 ```
 
 # Authentication Bypass
-```
+```JavaScript
 # Checks
 console.log('document.cookie =', document.cookie);
 console.log('localStorage.isAdmin =', localStorage.getItem('isAdmin'));
